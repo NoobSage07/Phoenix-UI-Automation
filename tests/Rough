@@ -1,0 +1,238 @@
+response = requests.get(url)
+
+# Parse the HTML content of the page
+soup = BeautifulSoup(response.content, "html.parser")
+
+# Find all <img> tags on the page
+images = soup.find_all("img")
+
+# Loop through each <img> tag and check if it contains the word "Phoenix"
+phoenix_found = False
+for img in images:
+    if "phoenix" in img.get("alt", "").lower() or "phoenix" in img.get("title", "").lower():
+        phoenix_found = True
+        break
+
+# Check if "Phoenix" was found in any of the image alt or title attributes
+if phoenix_found:
+    print("The website contains the name 'Phoenix' in its logo.")
+else:
+    print("The website does not contain the name 'Phoenix' in its logo.")
+
+
+
+
+
+
+    def enter_valid_userPassword(self):
+        # password
+        self.driver.find_element(By.ID, "password").click()
+        self.driver.find_element(By.ID, "password").clear()
+        self.driver.find_element(By.ID, "password").send_keys("password")
+
+    def enter_invalid_userName(self):
+        # username
+        self.driver.find_element(By.ID, "username").click()
+        self.driver.find_element(By.ID, "username").clear()
+        self.driver.find_element(By.ID, "username").send_keys("iamfdX")
+
+    def enter_invalid_userPassword(self):
+        # password
+        self.driver.find_element(By.ID, "password").click()
+        self.driver.find_element(By.ID, "password").clear()
+        self.driver.find_element(By.ID, "password").send_keys("passwordX")
+
+    def enter_blank_userName(self):
+        # username
+        self.driver.find_element(By.ID, "username").click()
+        self.driver.find_element(By.ID, "username").clear()
+        self.driver.find_element(By.ID, "username").send_keys(" ")
+
+    def enter_blank_userPassword(self):
+        # password
+        self.driver.find_element(By.ID, "password").click()
+        self.driver.find_element(By.ID, "password").clear()
+        self.driver.find_element(By.ID, "password").send_keys(" ")
+
+    def click_signInButton(self):
+        # SignButton
+        self.driver.find_element(By.XPATH, "//span[contains(text(), ' Sign in ')]/../..").click()
+        time.sleep(2)
+
+
+
+
+ DASHBOARD
+ import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+driver = webdriver.Chrome()
+driver.maximize_window()
+driver.implicitly_wait(5)
+url = "http://phoenix.testautomationacademy.in/sign-in"
+driver.get(url)
+# username
+driver.find_element(By.ID, "username").clear()
+driver.find_element(By.ID, "username").send_keys("iamfd")
+# password
+driver.find_element(By.ID, "password").clear()
+driver.find_element(By.ID, "password").send_keys("password")
+# SignButton
+driver.find_element(By.XPATH, "//span[contains(text(), ' Sign in ')]/../..").click()
+time.sleep(4)
+
+# DASHBOARD
+dashboard_menu_LOCATOR = "//span[contains(text(), \" Dashboard \")]"
+pending_4_delivery_LOCATOR = "//div[contains(text(), \"Pending for delivery\")]/../div/button"
+created_today_LOCATOR = "//div[contains(text(),'Created today')]/../div/button"
+pending_4_FST_assignment_LOCATOR = "//div[contains(text(),'Pending for FST assignment')]/../div/button"
+
+# Printing Table
+table_LOCATOR = "//mat-table"
+row_LOCATOR = "//mat-header-row"
+cell_LOCATOR = "//mat-cell"
+
+# Click on Pending on Delivery
+driver.find_element(By.XPATH, pending_4_delivery_LOCATOR).click()
+
+table = driver.find_element(By.TAG_NAME, "mat-table")
+rows = table.find_elements(By.XPATH, "//mat-header-row")
+# Single row
+data = []
+for row in rows:
+    cols = row.find_elements(By.XPATH, "//mat-cell")
+    row_data = []
+    for col in cols:
+        row_data.append(col.text)
+
+    data.append(row_data)
+
+print(data)
+
+
+
+
+
+
+    # def enter_userName(self, username_TEXT):
+    #     self.type_into_element(username_TEXT, "username_ID", self.username_ID)
+    #
+    # def enter_userPassword(self, username_TEXT):
+    #     self.type_into_element(password_TEXT, "password_ID", self.password_ID)
+    #
+    # def click_signInButton(self):
+    #     self.element_click("signButton_XPATH", self.signButton_XPATH)
+
+
+
+
+
+
+
+
+
+
+
+
+     def test_create_job(self):
+        # Login
+        login_page = LoginPage(self.driver)
+        login_page.fd_login("iamfd", "password")
+
+        # create_job.selectOEM("Google")
+        # create_job.selectProductName("Nexus 2")
+        # create_job.selectModelName("Nexus 2 blue")
+        # create_job.selectInWarrantyStatus("In Warrenty")
+        # create_job.selectProblem("Poor battery life")
+        # create_job.enterIMEI("12345431234567")
+        # create_job.enterDateOfPurchase("3/6/2024")
+        # create_job.enterRemarks("Blabla")
+        # create_job.enterFirstName("Mister")
+        # create_job.enterLastName("Twister")
+        # create_job.enterContactNo("98097687777")
+        # create_job.enterEmail("gucci@gang.com")
+        # create_job.enterFlatNo("420")
+        # create_job.enterApartmentNo("Earth")
+        # create_job.enterLandmark("land")
+        # create_job.enterStreetName("Street")
+        # create_job.enterArea("Area")
+        # create_job.selectState("Delhi")
+        # create_job.enterPincode("110043")
+        # time.sleep(4)
+
+
+
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+# Assuming 'driver' is your WebDriver instance
+
+# Locate the table element
+table = driver.find_element(By.TAG_NAME, "table")
+
+# Initialize an empty list to store table values
+table_values = []
+
+# Get all rows of the table
+rows = table.find_elements(By.TAG_NAME, "tr")
+
+# Iterate over each row
+for row in rows:
+    # Get all cells of the row
+    cells = row.find_elements(By.TAG_NAME, "td")
+
+    # Initialize an empty list to store cell texts
+    cell_texts = []
+
+    # Iterate over each cell
+    for cell in cells:
+        # Retrieve text from the cell
+        cell_text = cell.text.strip()
+
+        # Add cell text to the list
+        cell_texts.append(cell_text)
+
+    # Append cell texts to the table_values list
+    table_values.append(cell_texts)
+
+# Print table values
+for row in table_values:
+    print("\t".join(row))
+
+
+
+
+
+
+
+# table = driver.find_element(By.TAG_NAME, "mat-table")
+# rows = table.find_elements(By.XPATH, "//mat-row")  # Using "//mat-row" instead of "//mat-header-row"
+# data = []
+# for row in rows:
+#     cols = row.find_elements(By.TAG_NAME, "mat-cell")  # Using "mat-cell" for cell elements
+#     row_data = []
+#     for col in cols:
+#         row_data.append(col.text)
+#     data.append(row_data)
+#
+# # Print each row on a new line
+# for row in data:
+#     print(*row, sep='\n')  # Using *row to unpack the list elements and sep='\n' to print each element on a new line
+#
+# # Print the total number of rows
+# print("Number of rows:", len(data))
+
+
+# table = driver.find_element(By.TAG_NAME, "mat-table")
+# rows = table.find_elements(By.XPATH, "//mat-row")
+# data = []
+# for row in rows:
+#     cols = row.find_elements(By.TAG_NAME, "mat-cell")
+#     row_data = [col.text for col in cols]
+#     data.append(row_data)
+#
+# # Print table data
+# for row in data:
+#     print("\t".join("{:<20}".format(cell) for cell in row))
